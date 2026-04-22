@@ -10,18 +10,20 @@ public class GameView : MonoBehaviour
     public Text timerText;
     public GameObject mainMenuButton;
     
-    // Start is called before the first frame update
+    // start is called before the first frame update
     private void Start()
     {
-        // Set the text property of our Result Text UI to an empty string, making the game over message blank
+        // set the text property of our Result Text UI to an empty string,
+        // making the game over message blank
         resultText.text = "";
         countText.text = "Count: 0";
     }
 
-    // Create a standalone function that can update the 'countText' UI and check if the required amount to win has been achieved
+    // Create a standalone function that can update the 'countText' UI
+    // and check if the required amount to win has been achieved
     public void SetCountText(int count)
     {
-        // Update the text field of our 'countText' variable
+        // update the text field of our 'countText' variable
         countText.text = "Count: " + count;
     }
 

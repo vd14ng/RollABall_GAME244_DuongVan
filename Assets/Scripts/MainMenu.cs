@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    // LOAD SCENE METHOD
     public void OnClickLoadScene(int sceneIndex)
     {
-        //Make sure the sceneIndex is less than or equal to the scene count in the 
-        // Build settings
+        // make sure the SCENEINDEX is less than
+        // or equal to the scene count in the build settings
         if (sceneIndex > SceneManager.sceneCountInBuildSettings-1)
         {
             Debug.LogWarning($"{gameObject.name}'s OnClickLoadScene index is out of range. \n Make sure" +
@@ -23,7 +24,9 @@ public class MainMenu : MonoBehaviour
     public void OnClickQuit()
     {
         Application.Quit();
-        //Show this message in the editor so we know this method is being called
+        
+        // show this message in the editor
+        // so we know this method is being called
         Debug.Log("Main Menu Quit.");
     }
 }

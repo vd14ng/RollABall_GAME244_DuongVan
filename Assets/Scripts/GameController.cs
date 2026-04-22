@@ -17,11 +17,19 @@ public class GameController : MonoBehaviour
     private GameStates gameState;
     private int maxCollectiblesCount;
     private GameObject[] inventory;
+    
+    // SCREEN EFFECTS MANAGER PACKAGE
+    private ScreenEffectsManager effects;
+    public float duration = .5f; 
+    public float magnitude = 1; 
+    public Color flashColor;
 
     private void Start()
     {
         gameView = GetComponentInChildren<GameView>();
         gameState = GameStates.GamePlaying;
+        
+        effects = FindObjectOfType<ScreenEffectsManager>(); 
         
         // find the NUMBER of objects with "PICK UP" tag
         // maxCollectiblesCount = GameObject.FindGameObjectsWithTag("Collectable").Length;
@@ -34,17 +42,17 @@ public class GameController : MonoBehaviour
     {
         gameState = GameStates.GameWon;
         
-        // Set the text value of our result text
+        // SET the text value of our result text
         gameView.resultText.text = "You Win!";
         
-        //Hide count and timer text
+        // HIDE count and timer text
         gameView.countText.gameObject.SetActive(false);
         gameView.timerText.gameObject.SetActive(false);
         
-        //Play win sfx
+        // play win sfx
         AudioManager.Instance.PlayWinSFX();
         
-        //Enable main menu button
+        // enable main menu button
         gameView.mainMenuButton.SetActive(true);
         
     }
@@ -69,7 +77,8 @@ public class GameController : MonoBehaviour
 
     public void StateUpdate(GameStates newState)
     {
-        // EXIT CONDITION - if the game is not in play, we cannot advance to win or lose
+        // EXIT CONDITION
+        // if the game is not in play, we cannot advance to win or lose
         if (gameState != GameStates.GamePlaying)
         {
             return;
