@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
         gameView.timerText.gameObject.SetActive(false);
         
         // play "Lose" SFX
-        AudioManager.Instance.PlayLoseSFX();
+        // AudioManager.Instance.PlayLoseSFX();
         
         // enable main menu button
         gameView.mainMenuButton.SetActive(true);

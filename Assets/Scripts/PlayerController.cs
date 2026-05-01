@@ -6,37 +6,65 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {	
 	
-	// create public variables for PLAYER SPEED
+	// Create public variables for PLAYER SPEED
 	// and for the TEXT UI GAME OBJECTS
 	public float speed;
 	
-	// create list for INVENTORY
+	// Create list for INVENTORY
 	public List<GameObject> inventory = new List<GameObject>();
 	
-	// reference ITEMINFO script
+	// Reference ItemInfo class
 	private Item itemInfo;
 	
-	// create private references to the rigidbody component on the player
+	// Create private references to the RigidBody component on the player
 	// and the count of objects picked up so far
 	private Rigidbody rb;
 	
+	// Variables to jump
+	private bool isGrounded;
+	public float jumpForce = 5f;
+	
 	// private int count;
 	private GameController gameController;
-	private Vector2 moveInput;
-
-	// at the start of the game..
+	private Vector3 moveInput;
+	
 	void Start ()
 	{
 		gameController = GetComponentInParent<GameController>();
 		
-		// Aasign the Rigidbody component to our private rb variable
+		// Assign the Rigidbody component to our private rb variable
 		rb = GetComponent<Rigidbody>();
+		
+		//
 
-		// set the count to zero 
+		// Set the count to zero 
 		// count = 0;
 	}
+
+	/* void Update()
+	{
+		if (Input.GetButtonDown("Jump") && isGrounded)
+		{
+			Jump();
+		}
+	}
+
+	private void Jump()
+	{
+		// ForceMode.Impulse is best for jumps as it applies the force instantly
+		rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+		isGrounded = false;
+	}
 	
-    public void OnMove(InputAction.CallbackContext context)
+	void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.CompareTag("Ground"))
+		{
+			isGrounded = true;
+		}
+	} */
+
+	public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
     }
